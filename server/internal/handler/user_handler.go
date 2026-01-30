@@ -184,5 +184,5 @@ func (h *UserHandler) GetCurrentUserHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": authUser})
+	c.JSON(http.StatusOK, authUser)
 }

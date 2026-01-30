@@ -64,6 +64,7 @@ func CreateExpenseTable() {
         item VARCHAR(255) NOT NULL,
         cost DOUBLE NOT NULL,
         date DATE NOT NULL,
+		type ENUM('income', 'expense') NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(user_id)
