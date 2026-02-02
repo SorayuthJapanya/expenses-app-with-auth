@@ -71,5 +71,11 @@ func main() {
 
 	}
 
-	router.Run(":8080")
+	port := cfg.PORT
+	if port == "" {
+		port = "8080"
+	}
+
+	// Run server
+	router.Run(":" + port)
 }

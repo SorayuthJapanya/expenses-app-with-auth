@@ -52,6 +52,10 @@ Create a `.env` file for the server (example keys):
 
 - `DATABASE_DSN` = database dsn for connecting with MySQL Server
 - `JWT_SECRET` — secret for signing JWTs
+- `CLIENT_URL` — url for cors origin
+- `PORT` — select port for run server
+
+---
 
 ## Local Development
 
@@ -105,4 +109,5 @@ The frontend runs on `http://localhost:3000` by default; the API will log its li
 ---
 
 ## License
+
 MIT — see the LICENSE file if present.
