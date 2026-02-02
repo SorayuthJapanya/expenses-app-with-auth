@@ -26,7 +26,7 @@ export default function ExpensesGroupChart({ data }: ExpensesGroupProps) {
   } satisfies ChartConfig;
 
   return (
-    <Card className="w-full mx-auto rounded-me hover:shadow-lg">
+    <Card className="w-full mx-auto rounded-md hover:shadow-lg duration-200">
       <CardHeader>Last 30 Days Expenses</CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -40,6 +40,7 @@ export default function ExpensesGroupChart({ data }: ExpensesGroupProps) {
               tickMargin={10}
               axisLine={false}
             />
+
             <ChartTooltip
               cursor={{ fill: "transparent" }}
               content={<ChartTooltipContent hideLabel />}

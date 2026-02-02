@@ -1,4 +1,4 @@
-import AuthForm from "@/components/form/AuthForm";
+import AuthForm from "@/components/form/auth-form";
 import Image from "next/image";
 
 export default function AuthPage() {

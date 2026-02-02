@@ -1,6 +1,6 @@
 import React from "react";
 import Providers from "../providers";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/shared/app-sidebar";
 import { Toaster } from "react-hot-toast";
 import AppNavbar from "@/components/shared/app-navbar";
