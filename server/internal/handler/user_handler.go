@@ -96,7 +96,9 @@ func (h *UserHandler) RegisterUserHandler(c *gin.Context) {
 	}
 
 	// Set Cookies
-	c.SetSameSite(http.SameSiteNoneMode)
+	if cfg.GO_ENV == "production" {
+		c.SetSameSite(http.SameSiteNoneMode)
+	}
 	c.SetCookie(
 		cookiesOption.Name,
 		cookiesOption.Value,
@@ -167,7 +169,9 @@ func (h *UserHandler) LoginUserHandler(c *gin.Context) {
 	}
 
 	// Set Cookies
-	c.SetSameSite(http.SameSiteNoneMode)
+	if cfg.GO_ENV == "production" {
+		c.SetSameSite(http.SameSiteNoneMode)
+	}
 	c.SetCookie(
 		cookiesOption.Name,
 		cookiesOption.Value,

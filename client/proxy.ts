@@ -1,13 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export default function proxy(req: NextRequest) {
-  const token = req.cookies.get("Authorization")?.value;
+export async function proxy(req: NextRequest) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/api/auth/me`,
+    {
+      headers: {
+        cookie: req.headers.get("cookie") || "",
+      },
+      credentials: "include",
+    }
+  );
 
   const { pathname } = req.nextUrl;
 
-  if (!token && pathname !== "/auth") {
+  if (res.status === 401 && pathname !== "/auth") {
     return NextResponse.redirect(new URL("/auth", req.url));
-  } else if (token && pathname === "/auth") {
+  }
+
+  if (res.status === 200 && pathname === "/auth") {
     return NextResponse.redirect(new URL("/", req.url));
   }
 

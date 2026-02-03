@@ -251,7 +251,11 @@ func (h *ExpenseHandler) GetDashBoardExpenseHandler(c *gin.Context) {
 	}
 
 	// Set recent transactions to dashboard data
-	dashboardData.Recent_transactions = recent_transactions[0:5]
+	if len(recent_transactions) > 5 {
+		dashboardData.Recent_transactions = recent_transactions[0:5]
+	} else {
+		dashboardData.Recent_transactions = recent_transactions
+	}
 
 	// Get latest expenses from database
 	latest_expenses, err := h.expenseRepo.GetExpenses(user_id, "expense")
@@ -261,7 +265,11 @@ func (h *ExpenseHandler) GetDashBoardExpenseHandler(c *gin.Context) {
 	}
 
 	// Set latest expenses to dashboard data
-	dashboardData.Expenses_latest = latest_expenses[0:5]
+	if len(latest_expenses) > 5 {
+		dashboardData.Expenses_latest = latest_expenses[0:5]
+	} else {
+		dashboardData.Expenses_latest = latest_expenses
+	}
 
 	// Get expenses group from database
 	expenses_group, err := h.expenseRepo.GetExpensesGroup(user_id)
