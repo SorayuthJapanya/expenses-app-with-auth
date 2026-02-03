@@ -2,6 +2,7 @@ package handler
 
 import (
 	"fmt"
+	"go_expense_app/config"
 	"go_expense_app/internal/model"
 	"go_expense_app/internal/repository"
 	"go_expense_app/internal/service"
@@ -23,6 +24,10 @@ func NewUserHandler(userRepo repository.UserRepository) *UserHandler {
 
 // RegisterUserHandler
 func (h *UserHandler) RegisterUserHandler(c *gin.Context) {
+	// LoadEnv
+	config.LoadEnv()
+	cfg := config.LoadConfig()
+
 	// Define variable
 	var newUser model.User
 
@@ -86,7 +91,7 @@ func (h *UserHandler) RegisterUserHandler(c *gin.Context) {
 		MaxAge:   3600 * 24,
 		Path:     "/",
 		Domain:   "",
-		Secure:   false,
+		Secure:   cfg.GO_ENV == "production",
 		HttpOnly: true,
 	}
 
@@ -108,6 +113,10 @@ func (h *UserHandler) RegisterUserHandler(c *gin.Context) {
 
 // LoginUserHandler
 func (h *UserHandler) LoginUserHandler(c *gin.Context) {
+	// LoadEnv
+	config.LoadEnv()
+	cfg := config.LoadConfig()
+
 	// Define variable
 	var requestUser model.User
 
@@ -152,7 +161,7 @@ func (h *UserHandler) LoginUserHandler(c *gin.Context) {
 		MaxAge:   3600 * 24,
 		Path:     "/",
 		Domain:   "",
-		Secure:   false,
+		Secure:   cfg.GO_ENV == "production",
 		HttpOnly: true,
 	}
 
