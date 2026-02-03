@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export async function proxy(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/api/auth/me`,
     {
